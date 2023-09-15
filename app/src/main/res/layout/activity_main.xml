@@ -6,206 +6,146 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+    <!-- di tiap view ga perlu dimasukin ke viewgroup lagi, langsung aja view nya -->
+    <!-- view adalah : ImageView, TextView, dsb -->
+    <!-- viewGroup adalah : ConstraintLayout, LinearLayout, RelativeLayout, dll -->
+    <!-- Karena pakai constraint layout, untuk menyambungkan dari satu view ke view lainnya
+        tinggal pakai atribut constraint layout contohnya app:layout_constraintTop_toBottomOf="" ,
+        jadi gausah dikasih margin atas bawah yang besar -->
+    <!-- untuk lebih lanjut tentang penempatan view di dalam constraint layout, pakai atribut berikut :
+         - layout_constraintTop_toTopOf
+         - layout_constraintTop_toBottomOf
+         - layout_constraintBottom_toBottomOf
+         - layout_constraintBottom_toTopOf
+         - layout_constraintStart_toStartOf
+         - layout_constraintStart_toEndOf
+         - layout_constraintEnd_toEndOf
+         - layout_constraintEnd_toStartOf
+    -->
+    <!-- diusahakan ketika buat sebuah layout tidak pakai drag and drop, tapi di koding manual,
+        agar hasilnya maksimal -->
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/background"
-            android:contentDescription="@string/todoo" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <!-- adjustViewBounds digunakan agar ukuran container image sesuai dengan besar image yang
+         sebenarnya -->
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="40dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/noisy1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="#212121"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+
+    <EditText
+        android:id="@+id/txtUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="40dp"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#3E2723"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <EditText
+        android:id="@+id/txtPass"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="500dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#4E342E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/txtUser" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="262dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/todooo"
-            app:srcCompat="@drawable/noisy1"
-            tools:ignore="ContentDescription,VisualLintBounds" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="420dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/login"
-            android:textColor="#212121"
-            android:textSize="36sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="375dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="300dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/txtUser"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/username"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColorHint="#3E2723"
-            tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="470dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="200dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/txtPass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            android:textColorHint="#4E342E"
-            tools:ignore="VisualLintTextFieldSize" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="560dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="125dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/button"
-            tools:ignore="TouchTargetSizeCheck,VisualLintButtonSize" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="630dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="35dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/google"
-            android:contentDescription="@string/todo5" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="630dp"
-        android:layout_marginEnd="285dp"
-        android:layout_marginBottom="35dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/txtPass" />
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/gambar"
-            android:contentDescription="@string/todo3" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="285dp"
-        android:layout_marginTop="630dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="35dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- dimentionRatio itu untuk menentukan ratio image agar ketika menambahkan height/weight
+         bentuknya tetap sesuai ratio -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/google"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/button" />
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/github"
-            android:contentDescription="@string/todo4" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:src="@drawable/gambar"
+        app:layout_constraintBottom_toBottomOf="@id/imageView"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:src="@drawable/github"
+        app:layout_constraintBottom_toBottomOf="@id/imageView"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="@id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
